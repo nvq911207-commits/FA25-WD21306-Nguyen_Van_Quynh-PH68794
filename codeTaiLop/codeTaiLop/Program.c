@@ -3,10 +3,75 @@
 
 #include <stdio.h>
 
-int main()
-{
-    printf("Hi there!\n");
+// ===== CHUC NANG 1 =====
+int laSoNguyenTo(int n) {
+    if (n < 2) return 0;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
 }
+
+int laSoChinhPhuong(int n) {
+    int can = sqrt(n);
+    return can * can == n;
+}
+void KTRSoNguyen() {
+    int x;
+    int tieptuc = 1;
+    do {
+        printf("Nhap so nguyen x: ");
+        scanf_s("%d", &x);
+        printf("-> %d la so nguyen\n", x);
+        if (laSoNguyenTo(x)) printf("-> %d la so nguyen to\n", x);
+        else printf("-> %d khong phai so nguyen to\n", x);
+        if (laSoChinhPhuong(x)) printf("-> %d la so chinh phuong\n", x);
+        else printf("-> %d khong phai so chinh phuong\n", x);
+        printf("\nTiep tuc chuc nang 1? (1 = co, 0 = khong):");
+        scanf_s("%d", &tieptuc);
+    } while (tieptuc == 1);
+}
+// ===== CHUC NANG 2 =====
+int UCLN(int a, int b) {
+    if (b == 0) return a;
+    return UCLN(b, a % b);
+}
+int BCNN(int a, int b) {
+    return (a * b) / UCLN(a, b);
+}
+void UCllBCNN() {
+    int x, y;
+    int tieptuc = 1;
+    do {
+        printf("Nhap 2 so nguyen x, y: ");
+        scanf_s("%d%d", &x, &y);
+        printf("Uoc so chung lon nhat: %d\n", UCLN(x, y));
+        printf("Boi so chung nho nhat: %d\n", BCNN(x, y));
+        printf("\nTiep tuc chuc nang 1? (1 = co, 0 = khong):");
+        scanf_s("%d", &tieptuc);
+    } while (tieptuc == 1);
+}
+// ===== MENU CHÍNH =====
+int main() {
+    int chon;
+    do {
+        printf("\n===== MENU CHUONG TRINH =====\n");
+        printf("1. Kiem tra so nguyen\n");
+        printf("2. Tim UCLN va BCNN\n");
+        printf("0. Thoat\n");
+        printf("Lua chon cua ban: ");
+        scanf_s("%d", &chon);
+        switch (chon) {
+        case 1: KTRSoNguyen(); break;
+        case 2: UCllBCNN(); break;
+        case 0: printf("Tam biet!\n"); break;
+        default: printf("Lua chon khong hop le!\n");
+        }
+    } while (chon != 0);
+
+    return 0;
+}
+
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
 
