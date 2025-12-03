@@ -2,8 +2,10 @@
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
+#define ROWS 2 
+#define COLS 3
 
-// ===== CHUC NANG 1 =====
+ // ===== CHUC NANG KIEMTRASO =====
 int laSoNguyenTo(int n) {
     if (n < 2) return 0;
     for (int i = 2; i <= sqrt(n); i++) {
@@ -31,7 +33,7 @@ void KTRSoNguyen() {
         scanf_s("%d", &tieptuc);
     } while (tieptuc == 1);
 }
-// ===== CHUC NANG 2 =====
+// ===== CHUC NANG UCLNBCNN =====
 int UCLN(int a, int b) {
     if (b == 0) return a;
     return UCLN(b, a % b);
@@ -51,6 +53,37 @@ void UCllBCNN() {
         scanf_s("%d", &tieptuc);
     } while (tieptuc == 1);
 }
+// ===== CHUC NANG Mang =====
+int main() {
+    Mang2Chieu();
+    return 0;
+}
+void Mang2Chieu()
+{
+    int array[ROWS][COLS];
+    do {
+        printf("--- NHAP GIA TRI CHO MANG 2 CHIEU (%dx%d) ---\n", ROWS, COLS);
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLS; j++)
+            {
+                printf("Nhap phan tu A[%d][%d]: ", i, j);
+                scanf_s("%d", &array[i][j]);
+            }
+        }
+        printf("\n--- MANG 2 CHIEU VUA NHAP ---\n");
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLS; j++)
+            {
+                printf("%4d", array[i][j]);
+            }
+            printf("\n");
+            printf("\nTiep tuc chuc nang 1? (1 = co, 0 = khong):");
+            scanf_s("%d", &tieptuc);
+        } while (tieptuc == 1);
+    }
+}
 // ===== MENU CHÍNH =====
 int main() {
     int chon;
@@ -58,12 +91,14 @@ int main() {
         printf("\n===== MENU CHUONG TRINH =====\n");
         printf("1. Kiem tra so nguyen\n");
         printf("2. Tim UCLN va BCNN\n");
+        printf("3. Mang 2 chieu\n");
         printf("0. Thoat\n");
         printf("Lua chon cua ban: ");
         scanf_s("%d", &chon);
         switch (chon) {
         case 1: KTRSoNguyen(); break;
         case 2: UCllBCNN(); break;
+        case 3: Mang2chieu(); break;
         case 0: printf("Tam biet!\n"); break;
         default: printf("Lua chon khong hop le!\n");
         }
