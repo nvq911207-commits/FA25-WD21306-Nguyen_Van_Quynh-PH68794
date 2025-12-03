@@ -1,10 +1,9 @@
-// CConsoleApplication.c : file nay chua 'main' function. 
+﻿// CConsoleApplication.c : file nay chua 'main' function. 
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
-#define ROWS 2 
-#define COLS 3
-
+#define ROWS 2 // Số hàng
+#define COLS 3 // Số cột
  // ===== CHUC NANG KIEMTRASO =====
 int laSoNguyenTo(int n) {
     if (n < 2) return 0;
@@ -54,13 +53,9 @@ void UCllBCNN() {
     } while (tieptuc == 1);
 }
 // ===== CHUC NANG Mang =====
-int main() {
-    Mang2Chieu();
-    return 0;
-}
-void Mang2Chieu()
-{
+void Mang2Chieu() {
     int array[ROWS][COLS];
+    int tieptuc = 1;
     do {
         printf("--- NHAP GIA TRI CHO MANG 2 CHIEU (%dx%d) ---\n", ROWS, COLS);
         for (int i = 0; i < ROWS; i++)
@@ -78,13 +73,12 @@ void Mang2Chieu()
             {
                 printf("%4d", array[i][j]);
             }
-            printf("\n");
-            printf("\nTiep tuc chuc nang 1? (1 = co, 0 = khong):");
-            scanf_s("%d", &tieptuc);
-        } while (tieptuc == 1);
-    }
-}
-// ===== MENU CH�NH =====
+            printf("\n"); 
+        }
+        printf("\nTiep tuc chuc nang Mang 2 chieu? (1 = co, 0 = khong):");
+        scanf_s("%d", &tieptuc);
+    } while (tieptuc == 1); 
+// ===== MENU CHÍNH =====
 int main() {
     int chon;
     do {
@@ -98,7 +92,7 @@ int main() {
         switch (chon) {
         case 1: KTRSoNguyen(); break;
         case 2: UCllBCNN(); break;
-        case 3: Mang2chieu(); break;
+        case 3: Mang2Chieu(); break;
         case 0: printf("Tam biet!\n"); break;
         default: printf("Lua chon khong hop le!\n");
         }
